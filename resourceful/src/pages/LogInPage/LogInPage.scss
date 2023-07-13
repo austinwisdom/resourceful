@@ -5,5 +5,8 @@
 .log-in {
     padding: 2rem 8rem;
     @include flex (space-between);
-    
+    &__form {
+        @include glass-div;
+        padding: 2rem;
+    }
 }
