@@ -1,0 +1,9 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.log-in {
+    padding: 2rem 8rem;
+    @include flex (space-between);
+    
+}

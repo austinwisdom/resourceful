@@ -1,0 +1,28 @@
+@use "./mixins" as *;
+@use "./variables" as *;
+@use "./typography" as *;
+
+
+.primary-button {
+    border-radius: 1.25rem;
+    border: none;
+    background: $button-gradient;
+    box-shadow: $button-shadow;
+    color: $black;
+}
+
+.secondary-button {
+    border-radius: 1.25rem;
+    box-shadow: $button-shadow;
+    border: solid 2px $green;
+    background-color: transparent;
+    color: $green;
+}
+
+.button-small {
+    @include size (6.25rem, 2.5rem)
+}
+
+.button-large {
+    @include size (8rem, 2.5rem)
+}
