@@ -16,9 +16,13 @@ import Homepage from './pages/Homepage/Homepage';
 
 function App() {
 
+  const user = false
+
   const browserRoutes = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout />}>
-      <Route path='/' element={<Homepage />}></Route>
+      {user ? ( <Route path='/' element={<Homepage />}></Route> ) : (
+        <Route path='/' element={<SignUpPage />}></Route>
+      )}
       <Route path='/sign-up' element={<SignUpPage />}></Route>
       <Route path='/log-in' element={<LogInPage />}></Route>
     </Route>
