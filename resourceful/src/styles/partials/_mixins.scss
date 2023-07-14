@@ -1,0 +1,40 @@
+@use "./variables" as *;
+
+//Glass div//
+
+@mixin glass-div {
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.30) 18%, rgba(255, 255, 255, 0.00) 100%);
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12.5px);
+    // -webkit-backdrop-filter: blur(12.5px);
+}
+
+//Form field//
+
+@mixin form-field {
+    border-radius: 30px;
+    background: rgba(217, 217, 217, 0.40);  
+}
+
+// Typography //
+
+@mixin font ($font-size, $font-weight) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+}
+
+//Display flex//
+
+@mixin flex($justify-content, $align-items: normal, $direction: row) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $direction;
+  }
+
+@mixin size ($width, $height) {
+    width: $width;
+    height: $height;
+}

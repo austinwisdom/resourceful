@@ -1,0 +1,11 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+    padding: 1rem 8rem;
+    @include flex (space-between, center);
+    &__buttons {
+        @include flex (space-between);
+        gap: 1rem;
+    }
+}

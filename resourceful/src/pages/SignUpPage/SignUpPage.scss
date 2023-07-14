@@ -1,0 +1,60 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.sign-up {
+    padding: 2rem 8rem;
+    @include flex (center, center);
+    &__img-wrapper {
+        position: relative;
+    }
+    &__blob {
+        position: absolute;
+        top: 4rem;
+        left: 2rem;
+        z-index: -1;
+        animation: $float;
+    }
+    &__img-icons {
+        position: relative;
+        top: 2rem;
+        left: 3rem;
+        z-index: 2;
+    }
+    &__form {
+        @include glass-div;
+        width: 50%;
+        padding: 2rem 4rem;
+        @include flex (flex-start, center, column);
+        gap: 1rem;
+    }
+    &__title {
+        margin: 0;
+        padding-top: 1rem;
+    }
+    &__subheader {
+        margin: 0.5rem 0;
+    }
+    &__names {
+        width: 100%;
+        @include flex (space-between);
+        gap: 1rem;
+    }
+    &__field-container {
+        @include flex (flex-start, flex-start, column);
+        gap: 0.25rem;
+        width: 100%;
+    }
+    &__label {
+        padding-left: 0.75rem;
+    }
+    &__buttons {
+        @include flex (center);
+        gap: 2rem;
+        width: 100%;
+        margin: 1.5rem 0;
+    }
+    &__button {
+        margin-top: 1rem;
+    }
+}

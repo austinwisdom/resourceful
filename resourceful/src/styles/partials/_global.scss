@@ -1,0 +1,88 @@
+@use "./mixins" as *;
+@use "./variables" as *;
+@use "./typography" as *;
+
+
+.primary-button {
+    border-radius: 1.25rem;
+    border: none;
+    background: $button-gradient;
+    box-shadow: $button-shadow;
+    color: $black;
+    cursor: pointer;
+    &:hover {
+        background: $reverse-button-gradient;
+    }
+    &:focus {
+        background-color: $dark-green;
+    }
+}
+
+.secondary-button {
+    border-radius: 1.25rem;
+    box-shadow: $button-shadow;
+    border: none;
+    outline: solid 2px $green;
+    background-color: transparent;
+    color: $green;
+    cursor: pointer;
+    &:hover {
+        outline: solid 2px $dark-green;
+        color: $dark-green;
+    }
+}
+
+.button-small {
+    @include size (6.25rem, 2.5rem)
+}
+
+.button-large {
+    @include size (8rem, 2.5rem)
+}
+
+.form-field {
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.60);
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    padding: 0.5rem 1rem;
+    @include size (100%, 2.5rem);
+    &:focus {
+        border: 2px solid $white;
+        outline: none;
+    }
+    &:hover {
+        background: rgba(255, 255, 255, 0.30);
+    }
+}
+
+.link:link,
+.link:visited {
+    text-decoration: none;
+    color: $white;
+}
+
+.span {
+    color: $green;
+    &:hover {
+        color: $dark-green;
+    }
+}
+
+//Animations//
+
+@keyframes float {
+    0% {
+        transform: translateX(0)
+    }
+    25% {
+        transform: translateX(-0.25rem)
+    }
+    50% {
+        transform: translateY(-0.5rem)
+    }
+    100% {
+        transform: translateY(0)
+    }
+  }
