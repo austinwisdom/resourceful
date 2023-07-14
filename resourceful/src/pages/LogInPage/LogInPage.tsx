@@ -11,8 +11,6 @@ type User = {
 }
 
 type SetUser = ( user: User | "" ) => void
-   
-type Value = {value: string};
 
 const LogInPage = () => {
 
