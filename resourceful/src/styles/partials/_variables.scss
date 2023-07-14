@@ -4,12 +4,14 @@
 
 $background: #22204E;
 $green: #A5F3B6;
+$dark-green: #11A832;
 $black : #000;
 $white: #fff;
 
 //Buttons//
 $button-gradient: linear-gradient(180deg, #A5F3B6 0%, #11A832 100%);
 $button-shadow: 0px 4px 10px 0px rgba(165, 243, 182, 0.50);
+$reverse-button-gradient: linear-gradient(180deg, #11A832 0%, #A5F3B6 100%);
 
-
-$glass-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.30) 28.45%, rgba(255, 255, 255, 0.00) 100%);
+//Animations//
+$float: float 4s ease-in-out infinite alternate;

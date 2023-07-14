@@ -3,7 +3,9 @@
 
 @font-face {
     font-family: "Lato";
-    src: url("../../assets/fonts/Lato-Regular.ttf") format("trutype"),
+    src:
+    local("Lato"),
+    url("../../assets/fonts/Lato-Regular.ttf") format("trutype"),
     url("../../assets/fonts/Lato_Regular.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
@@ -11,7 +13,9 @@
 
 @font-face {
     font-family: "Lato";
-    src: url("../../assets/fonts/Lato-Bold.ttf") format("truetype"),
+    src: 
+    local("Lato"),
+    url("../../assets/fonts/Lato-Bold.ttf") format("truetype"),
     url("../../assets/fonts/Lato_Bold.woff2") format("woff2");
     font-weight: 700;
     font-style: normal;

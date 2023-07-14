@@ -12,8 +12,14 @@ const SignUpPage = () => {
                 <img src={redBlob} alt="blob" className="sign-up__blob"/>
             </div>
             <form className="sign-up__form">
-                <h1 className="sign-up__title page-header">Create account</h1>
-                <p className="sign-up__subheader paragraph">Already have an account? <span className="span">Log in.</span></p>
+                <div className="sign-up__header">
+                    <h1 className="sign-up__title page-header">Create account</h1>
+                    <p className="sign-up__subheader paragraph">Already have an account?
+                        <Link to="/log-in" className="link">
+                            <span className="span"> Log in.</span>
+                        </Link>
+                    </p>
+                </div>
                 <div className="sign-up__names">
                     <div className="sign-up__field-container">
                         <label htmlFor="firstName" className="sign-up__label paragraph">First name</label>
@@ -65,7 +71,7 @@ const SignUpPage = () => {
                         <Link to="/" className="sign-up__link">
                             <button className="sign-up__button secondary-button button-large label">Back</button>
                         </Link>
-                        <Link to="/" className="sign-up__link">
+                        <Link to="#" className="sign-up__link">
                             <button className="sign-up__button primary-button button-large label">Sign up</button>
                         </Link>
                     </div>

@@ -2,6 +2,8 @@ import "./LogInPage.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import authIcons from "../../assets/images/auth-icons.png";
+import purpleBlob from "../../assets/images/purple-blob.png";
 
 type User = {
     userName: string,
@@ -10,7 +12,7 @@ type User = {
 
 type SetUser = ( user: User | "" ) => void
    
-
+type Value = {value: string};
 
 const LogInPage = () => {
 
@@ -26,6 +28,7 @@ const LogInPage = () => {
         axios
         .post("http://localhost:8080/users/login", {userName: username, password: password})
         .then((res) => {
+            console.log(res.data)
             axios.get("http://localhost:8080/users")
             .then((res) => {
                 console.log(res)
@@ -40,27 +43,37 @@ const LogInPage = () => {
       }  
     
       const handleChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {
-        // event.preventDefault();
-        const value = event.target.value;
+        event.preventDefault();
+        const target = event.target as typeof event.target & {
+            value: string };
+        const value = target.value;
         setUsername(value);
         console.log(username);
       }
 
       const handleChangePassword = (event: React.FormEvent<HTMLInputElement>) => {
-        // event.preventDefault();
-        const value = event.target.value;
+        event.preventDefault();
+        const target = event.target as typeof event.target & {
+            value: string };
+        const value = target.value;
         setPassword(value);
-        console.log(password);
       }
 
     return (
         <section className="log-in">
             <div className="log-in__img-wrapper">
-                
+                <img src={authIcons} alt="icons" className="log-in__img-icons"/>
+                <img src={purpleBlob} alt="blob" className="log-in__blob"/>
             </div>
             <form className="log-in__form" onSubmit={handleSubmit}>
-                <h1 className="log-in__title page-header">Welcome back</h1>
-                <p className="log-in__subheader paragraph">First time here? <span className="span">Create account.</span></p>
+                <div className="log-in__header">
+                    <h1 className="log-in__title page-header">Welcome back</h1>
+                    <p className="log-in__subheader paragraph">First time here?
+                        <Link to="/sign-up" className="link">
+                            <span className="span"> Create account.</span>
+                        </Link>
+                    </p>
+                </div>
                 <div className="log-in__field-container">
                         <label htmlFor="userName" className="log-in__label paragraph">Username</label>
                         <input 
