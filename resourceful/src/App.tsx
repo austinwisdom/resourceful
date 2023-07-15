@@ -7,7 +7,6 @@ import {
   Outlet
 } from "react-router-dom"
 
-import Header from './components/Header/Header';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import LogInPage from './pages/LogInPage/LogInPage';
 import Layout from './pages/Layout/Layout';
@@ -15,6 +14,7 @@ import Homepage from './pages/Homepage/Homepage';
 import axios from "axios";
 import './App.scss'
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import CategoryPage from "./pages/CategoryPage/CategoryPage";
 
 
 function App() {
@@ -27,6 +27,9 @@ function App() {
         .then((res) => {
           console.log(res.data)
           // setLoggedUser(res)
+        })
+        .catch (error => {
+          console.log(error)
         })
     }
     checkLoggedIn()
@@ -64,6 +67,7 @@ type SetUser = ( user: User | "" ) => void
       )}
       <Route path='/sign-up' element={<SignUpPage />}></Route>
       <Route path='/log-in' element={<LogInPage />}></Route>
+      <Route path='/:id' element={<CategoryPage />}></Route>
     </Route>
 
 
