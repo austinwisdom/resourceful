@@ -1,0 +1,36 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.homepage {
+    padding: 6rem 8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8rem;
+    &__category-container {
+        position: relative;
+    }
+    &__category {
+        position: relative;
+        @include glass-div;
+        padding: 2rem;
+        text-align: center;
+    }
+    &__category-title {
+        margin-top: 4rem;
+    }
+    &__icons {
+        position: absolute;
+        top: -3rem;
+        left: -4rem;
+        z-index: 2;
+    }
+    &__floating-blob {
+        position: absolute;
+        width: 100%;
+        top: -2rem;
+        left: 1rem;
+        z-index: -1;
+        animation: $float;
+    }
+}

@@ -145,12 +145,7 @@ const SignUpPage = () => {
                         />
                     </div>
                     <div className="sign-up__buttons">
-                        <Link to="/" className="sign-up__link">
-                            <button className="sign-up__button secondary-button button-large label">Back</button>
-                        </Link>
-                        
-                            <button type="submit" className="sign-up__button primary-button button-large label">Sign up</button>
-                        
+                        <button type="submit" className="sign-up__button primary-button button-large label">Sign up</button> 
                     </div>
             </form>
         </section>

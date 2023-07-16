@@ -96,11 +96,9 @@ const LogInPage = () => {
                     </div>
                     <div className="log-in__buttons">
                         <Link to="/" className="log-in__link">
-                            <button className="log-in__button secondary-button button-large label">Back</button>
+                            <button className="log-in__button secondary-button button-medium label">Back</button>
                         </Link>
-                    
-                        <button className="log-in__button primary-button button-large label">Log in</button>
-                       
+                        <button className="log-in__button primary-button button-medium label">Log in</button>
                     </div>
             </form>
         </section>

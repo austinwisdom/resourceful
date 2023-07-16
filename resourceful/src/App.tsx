@@ -14,6 +14,7 @@ import Layout from './pages/Layout/Layout';
 import Homepage from './pages/Homepage/Homepage';
 import axios from "axios";
 import './App.scss'
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 
 function App() {
@@ -57,7 +58,7 @@ type SetUser = ( user: User | "" ) => void
   const user = false
 
   const browserRoutes = createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
+    <Route path='/' element={<Layout />} errorElement={<PageNotFound />}>
       {user ? ( <Route path='/' element={<Homepage />}></Route> ) : (
         <Route path='/' element={<SignUpPage />}></Route>
       )}

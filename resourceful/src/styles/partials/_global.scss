@@ -36,8 +36,12 @@
     @include size (6.25rem, 2.5rem)
 }
 
-.button-large {
+.button-medium {
     @include size (8rem, 2.5rem)
+}
+
+.button-large {
+    @include size (12rem, 2.5rem)
 }
 
 .form-field {
