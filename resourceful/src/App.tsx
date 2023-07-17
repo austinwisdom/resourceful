@@ -5,7 +5,6 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import Layout from "./pages/Layout/Layout";
@@ -34,7 +33,6 @@ function App() {
       axios
         .get("http://localhost:8080/users")
         .then((res: AxiosResponse<User>) => {
-          console.log(res.data)
           setLoggedUser(res.data);
         })
         .catch((error:AxiosError) => {
