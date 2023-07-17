@@ -3,7 +3,7 @@
 
 
 .category {
-    padding: 5rem 8rem;
+    padding: 4rem 8rem;
     position: relative;
     
     &__main-container {
@@ -22,10 +22,9 @@
     }
     &__content-wrapper {
         overflow-y: scroll;
-        height: 65vh;
+        height: 60vh;
         &::-webkit-scrollbar {
             width: .625rem;
-           
         }
         &::-webkit-scrollbar-track {
             border-radius: 5px;
@@ -48,9 +47,9 @@
     &__blob {
         position: absolute;
         top: 0;
-        left: 12rem;
+        left: 16rem;
         z-index: -1;
-        width: 70vw;
+        width: 60vw;
         animation: $float;
     }
 }
