@@ -53,6 +53,13 @@ const Homepage = () => {
                 </div>
                 <img src={`http://localhost:8080/blobs/OTHE.png`} alt="floating blob" className="homepage__floating-blob"/> 
             </Link>
+            <Link to="/resources/GIT" className="homepage__category-container link">
+                <div className="homepage__category">
+                    <img src={`http://localhost:8080/icons/GIT.png`} alt="other icons" className="homepage__icons"/>
+                    <h3 className="homepage__category-title category-title">GIT</h3>
+                </div>
+                <img src={`http://localhost:8080/blobs/GIT.png`} alt="floating blob" className="homepage__floating-blob"/> 
+            </Link>
         </section>
     );
 };
