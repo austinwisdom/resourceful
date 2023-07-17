@@ -1,13 +1,34 @@
 import "./Links.scss";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-const Links = () => {
+const Links = ({ data, subCategory }) => {
+
+const [links, setLinks] = useState([])
+
+    useEffect(() => { 
+        const filterData = (data, subCategory) => { 
+                 let uniqueSubcat = []
+                 data.forEach((item) => { 
+              if (item.subcategory === subCategory) { 
+                 uniqueSubcat.push(item)
+              }
+              setLinks(uniqueSubcat)
+             })
+         }
+         filterData(data,subCategory)
+    },[])
+
+console.log(links)
+
     return (
         <section className="links">
-            <Link to="https://flukeout.github.io/" className="links__link link">
-                <p className="links__title paragraph">CSS Diner game is awesome for learning!</p>
-            </Link>
+        {
+         links.map((link) => <Link to={link.link} className="links__link link">
+             <p className="links__title paragraph">{link.title}</p>
+        </Link>)}
+           
         </section>
     )
 }
