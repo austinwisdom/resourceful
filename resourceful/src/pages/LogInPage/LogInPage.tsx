@@ -1,23 +1,18 @@
 import "./LogInPage.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import axios, {AxiosError, AxiosResponse} from "axios";
 import authIcons from "../../assets/images/auth-icons.png";
 import purpleBlob from "../../assets/images/purple-blob.png";
 
-type User = {
-    userName: string,
-    password: string,
-}
-
-type SetUser = ( user: User | "" ) => void
-
 const LogInPage = () => {
 
-    const [loggedUser, setLoggedUser]: [loggedUser: User | "", setLoggedUser: SetUser ] = useState<User | "">("");
     const [username, setUsername]: [username: string, setUsername: React.Dispatch<React.SetStateAction<string>>] = useState("");
     const [password, setPassword]: [password: string, setPassword: React.Dispatch<React.SetStateAction<string>>] = useState("");
+    const [loginMessage, setLoginMessage]: [loginMessage: string, setLoginMessage:React.Dispatch<React.SetStateAction<string>>] =useState("")
 
+    type Login = {userName:string}
+    type LoginError = {message:string}
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,18 +20,12 @@ const LogInPage = () => {
         axios.defaults.withCredentials = true;
         axios
         .post("http://localhost:8080/users/login", {userName: username, password: password})
-        .then((res) => {
-            console.log(res.data)
-            axios.get("http://localhost:8080/users")
-            .then((res) => {
-                console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        .then((res:AxiosResponse<Login>) => {
+            setLoginMessage(`Welcome back ${res.data.userName}`)
         })
-        .catch (error => {
-          console.log(error);
+        .catch ((error: AxiosError<LoginError>) => {
+            const errorMessage = error.response?.data?.message ?? "Unknown error occurred";
+            setLoginMessage(`Login failed with error: ${errorMessage}`);
         })
       }  
     
@@ -100,6 +89,7 @@ const LogInPage = () => {
                         </Link>
                         <button className="log-in__button primary-button button-medium label">Log in</button>
                     </div>
+                    <span className="log-in__message">{loginMessage}</span>
             </form>
         </section>
     )
