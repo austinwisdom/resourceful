@@ -14,6 +14,7 @@ import axios, { AxiosResponse, AxiosError } from "axios";
 import "./App.scss";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import "@fontsource/lato"
 
 function App() {
   type User = {
