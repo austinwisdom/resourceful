@@ -39,7 +39,7 @@ const subCategories = () => {
       <div className="category__main-container">
         <div className="category__header">
           <img
-            src={htmlIcon}
+            src={`http://localhost:8080/icons/${id.slice(0,4)}.png`}
             alt="html and css icons"
             className="category__icon"
           />
@@ -55,7 +55,7 @@ const subCategories = () => {
           </div>))}
         </div>
       </div>
-      <img src={redBlob} alt="red blob" className="category__blob" />
+      <img src={`http://localhost:8080/blobs/${id.slice(0,4)}.png`} alt="red blob" className="category__blob" />
     </section>
   );
 };

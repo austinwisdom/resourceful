@@ -9,6 +9,7 @@
     gap: 8rem;
     &__category-container {
         position: relative;
+        margin-bottom: 2rem;
     }
     &__category {
         position: relative;
@@ -24,6 +25,9 @@
         top: -3rem;
         left: -4rem;
         z-index: 2;
+    }
+    &__icons-detail {
+        padding: 0 2rem;
     }
     &__floating-blob {
         position: absolute;
