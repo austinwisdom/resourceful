@@ -3,9 +3,16 @@
 
 
 .category {
-    padding: 4rem 8rem;
+    padding: 5rem 8rem;
     position: relative;
-    
+    &__link {
+        position: absolute;
+        top: 0;
+        left: 8rem;
+    }
+    &__back-arrow {
+        height: 2rem;
+    }
     &__main-container {
         @include glass-div;
         padding: 2rem 4rem;
@@ -18,7 +25,7 @@
     &__title {
         padding-left: 8rem;
         margin: 0;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
     &__content-wrapper {
         overflow-y: scroll;
@@ -38,6 +45,7 @@
     &__subtitle {
         padding: 0.5rem 0;
         margin: 0;
+        margin-top: 1rem;
     }
     &__icon {
         position: absolute;
@@ -46,7 +54,7 @@
     }
     &__blob {
         position: absolute;
-        top: 0;
+        top: 1rem;
         left: 16rem;
         z-index: -1;
         width: 60vw;
