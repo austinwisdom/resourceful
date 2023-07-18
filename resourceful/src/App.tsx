@@ -19,9 +19,11 @@ function App() {
   type User = {
     userName: string;
   };
-
   type SetUser = (user: User | "") => void;
-  const [loggedIn, setLoggedIn] = useState(false)
+  type LoggedIn = boolean 
+  type SetLoggedIn = React.Dispatch<React.SetStateAction<boolean>>
+
+  const [loggedIn, setLoggedIn]: [loggedIn: LoggedIn, setLoggedIn: SetLoggedIn ] = useState(false)
   const [loggedUser, setLoggedUser]: [
     loggedUser: User | "",
     setLoggedUser: SetUser
@@ -47,8 +49,8 @@ function App() {
       <Route path="/" element={<Layout />} errorElement={<PageNotFound />}>
         <Route path="/" element={loggedUser? <Homepage/> : <SignUpPage/>}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
-        <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn}/>}></Route>
-        <Route path="/resources/:id" element={<CategoryPage />}></Route>
+        <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}></Route>
+        <Route path="/resources/:id" element={<CategoryPage/>}></Route>
       </Route>
     )
   );
