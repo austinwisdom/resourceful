@@ -1,6 +1,4 @@
 import "./Hompage.scss";
-import htmlIcon from "../../assets/icons/html+css.png";
-import redBlob from "../../assets/images/red-blob.png";
 import { Link } from "react-router-dom";
 
 const Homepage = () => {

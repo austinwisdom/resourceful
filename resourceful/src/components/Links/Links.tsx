@@ -25,7 +25,7 @@ console.log(links)
     return (
         <section className="links">
         {
-         links.map((link) => <Link to={link.link} className="links__link link">
+         links.map((link) => <Link to={link.link} target="_blank" className="links__link link">
              <p className="links__title paragraph">{link.title}</p>
         </Link>)}
            
