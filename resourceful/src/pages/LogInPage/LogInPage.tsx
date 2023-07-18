@@ -2,13 +2,14 @@ import "./LogInPage.scss";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios, {AxiosError} from "axios";
 import authIcons from "../../assets/images/auth-icons.png";
 import purpleBlob from "../../assets/images/purple-blob.png";
 
-const LogInPage = ({setLoggedIn}) => {
-const navigate =  useNavigate()
+const LogInPage = ({setLoggedIn, loggedIn}) => {
+    
+    const navigate =  useNavigate()
 
     const [username, setUsername]: [username: string, setUsername: React.Dispatch<React.SetStateAction<string>>] = useState("");
     const [password, setPassword]: [password: string, setPassword: React.Dispatch<React.SetStateAction<string>>] = useState("");
@@ -26,17 +27,23 @@ const navigate =  useNavigate()
         .post("http://localhost:8080/users/login", {userName: username, password: password})
         .then(() => {
             setLoggedIn(true);
-            loginSuccess();
-           setTimeout(() => { 
-            navigate("/")
-           }, 2000)  
+            loginSuccess();  
         })
         .catch ((error: AxiosError<LoginError>) => {
             const errorMessage = error.response?.data?.message ?? "Unknown error occurred";
             loginFail(errorMessage)
         })
       }  
-    
+
+      useEffect(()=> { 
+        if (loggedIn) { 
+            const timeout = setTimeout(() => { 
+                navigate("/")
+               }, 3000);
+               return () => clearTimeout(timeout)
+        }
+      }, [loggedIn, navigate]) 
+      
       const handleChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault();
         const target = event.target as typeof event.target & {
