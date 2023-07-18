@@ -1,10 +1,9 @@
 import "./CategoryPage.scss";
-import htmlIcon from "../../assets/icons/html+css.png";
-import redBlob from "../../assets/images/red-blob.png";
 import Links from "../../components/Links/Links";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import backArrow from "../../assets/images/back-arrow.png";
 
 const CategoryPage = () => {
   const { id } = useParams();
@@ -36,6 +35,10 @@ const subCategories = () => {
 
   return (
     <section className="category">
+        <Link to="/" className="category__link">
+            <img src={backArrow} alt="back arrow" className="category__back-arrow"/>
+        </Link>
+        
       <div className="category__main-container">
         <div className="category__header">
           <img
