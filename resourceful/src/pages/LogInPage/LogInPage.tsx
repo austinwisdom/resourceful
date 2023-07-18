@@ -7,7 +7,7 @@ import axios, {AxiosError} from "axios";
 import authIcons from "../../assets/images/auth-icons.png";
 import purpleBlob from "../../assets/images/purple-blob.png";
 
-const LogInPage = () => {
+const LogInPage = ({setLoggedIn}) => {
 const navigate =  useNavigate()
 
     const [username, setUsername]: [username: string, setUsername: React.Dispatch<React.SetStateAction<string>>] = useState("");
@@ -25,7 +25,8 @@ const navigate =  useNavigate()
         axios
         .post("http://localhost:8080/users/login", {userName: username, password: password})
         .then(() => {
-            loginSuccess()
+            setLoggedIn(true);
+            loginSuccess();
            setTimeout(() => { 
             navigate("/")
            }, 2000)  

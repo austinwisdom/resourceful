@@ -21,7 +21,7 @@ function App() {
   };
 
   type SetUser = (user: User | "") => void;
-
+  const [loggedIn, setLoggedIn] = useState(false)
   const [loggedUser, setLoggedUser]: [
     loggedUser: User | "",
     setLoggedUser: SetUser
@@ -40,18 +40,14 @@ function App() {
         });
     };
     checkLoggedIn();
-  },[]);
+  },[loggedIn]);
 
   const browserRoutes = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />} errorElement={<PageNotFound />}>
-        {loggedUser ? (
-          <Route path="/" element={<Homepage />}></Route>
-        ) : (
-          <Route path="/" element={<SignUpPage />}></Route>
-        )}
+        <Route path="/" element={loggedUser? <Homepage/> : <SignUpPage/>}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
-        <Route path="/log-in" element={<LogInPage />}></Route>
+        <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn}/>}></Route>
         <Route path="/resources/:id" element={<CategoryPage />}></Route>
       </Route>
     )
