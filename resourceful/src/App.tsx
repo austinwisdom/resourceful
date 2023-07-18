@@ -5,7 +5,6 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import Layout from "./pages/Layout/Layout";
@@ -14,6 +13,7 @@ import axios, { AxiosResponse, AxiosError } from "axios";
 import "./App.scss";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import "@fontsource/lato"
 
 function App() {
   type User = {
@@ -21,7 +21,7 @@ function App() {
   };
 
   type SetUser = (user: User | "") => void;
-
+  const [loggedIn, setLoggedIn] = useState(false)
   const [loggedUser, setLoggedUser]: [
     loggedUser: User | "",
     setLoggedUser: SetUser
@@ -33,7 +33,6 @@ function App() {
       axios
         .get("http://localhost:8080/users")
         .then((res: AxiosResponse<User>) => {
-          console.log(res.data)
           setLoggedUser(res.data);
         })
         .catch((error:AxiosError) => {
@@ -41,18 +40,14 @@ function App() {
         });
     };
     checkLoggedIn();
-  },[]);
+  },[loggedIn]);
 
   const browserRoutes = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />} errorElement={<PageNotFound />}>
-        {loggedUser ? (
-          <Route path="/" element={<Homepage />}></Route>
-        ) : (
-          <Route path="/" element={<SignUpPage />}></Route>
-        )}
+        <Route path="/" element={loggedUser? <Homepage/> : <SignUpPage/>}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
-        <Route path="/log-in" element={<LogInPage />}></Route>
+        <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn}/>}></Route>
         <Route path="/resources/:id" element={<CategoryPage />}></Route>
       </Route>
     )
