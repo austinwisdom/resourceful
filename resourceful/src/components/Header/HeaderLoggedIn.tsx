@@ -4,8 +4,6 @@ import { logOutHandler } from "../../utilities/handlers";
 import logo from "../../assets/images/Logo.svg";
 import "./Header.scss";
 
-
-
 const HeaderLoggedIn = ({ setLoggedIn }: {setLoggedIn: SetLoggedIn}) => {
 
     return (
