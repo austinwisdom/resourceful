@@ -16,6 +16,10 @@ import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import "@fontsource/lato"
 import "./App.scss";
 
+export  type User = {
+  userName: string;
+};
+
 function App() {
 
   const [loggedIn, setLoggedIn]: [loggedIn: LoggedIn, setLoggedIn: SetLoggedIn ] = useState(false)
@@ -41,7 +45,7 @@ function App() {
 
   const browserRoutes = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />} errorElement={<PageNotFound />}>
+      <Route path="/" element={<Layout loggedUser={loggedUser} setLoggedIn={setLoggedIn}/>} errorElement={<PageNotFound />}>
         <Route path="/" element={loggedUser? <Homepage/> : <SignUpPage/>}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}></Route>
