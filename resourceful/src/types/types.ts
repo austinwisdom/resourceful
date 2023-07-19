@@ -1,3 +1,5 @@
+export type SetUser = (user: User | "") => void;
+
 export type LoggedIn = boolean;
 export type SetLoggedIn = React.Dispatch<React.SetStateAction<boolean>>;
 
@@ -8,6 +10,9 @@ export type InputEvent = React.FormEvent<HTMLInputElement>
 
 export type SetUserInfo = React.Dispatch<React.SetStateAction<string>>;
 
+export interface User { 
+    userName:string
+}
 export interface ResourcesResponse { 
     _id: string
     title: string

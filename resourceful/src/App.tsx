@@ -5,23 +5,18 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import axios, { AxiosResponse, AxiosError } from "axios";
+import { User, SetUser, LoggedIn, SetLoggedIn } from "./types/types";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import Layout from "./pages/Layout/Layout";
 import Homepage from "./pages/Homepage/Homepage";
-import axios, { AxiosResponse, AxiosError } from "axios";
-import "./App.scss";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import "@fontsource/lato"
+import "./App.scss";
 
 function App() {
-  type User = {
-    userName: string;
-  };
-  type SetUser = (user: User | "") => void;
-  type LoggedIn = boolean 
-  type SetLoggedIn = React.Dispatch<React.SetStateAction<boolean>>
 
   const [loggedIn, setLoggedIn]: [loggedIn: LoggedIn, setLoggedIn: SetLoggedIn ] = useState(false)
   const [loggedUser, setLoggedUser]: [
