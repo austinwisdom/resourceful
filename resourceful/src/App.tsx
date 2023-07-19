@@ -15,6 +15,7 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import "@fontsource/lato"
 import "./App.scss";
+import ForbiddenPage from "./pages/ForbiddenPage/ForbiddenPage";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}></Route>
         <Route path="/resources/:id" element={<CategoryPage loggedUser={loggedUser}/>}></Route>
+        <Route path="/forbidden" element={<ForbiddenPage/>}></Route>
       </Route>
     )
   );
