@@ -17,7 +17,7 @@ const CategoryPage: React.FC<Props> = ({loggedUser}) => {
     const navigate = useNavigate();
 
     if (!loggedUser) {
-        navigate("/")
+        navigate("/forbidden")
     }
 
     const { id } = useParams();

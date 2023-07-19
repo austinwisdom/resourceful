@@ -2,15 +2,14 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/Logo.svg";
 import axios, { AxiosError } from "axios";
-import { SetLoggedIn, ClickEvent } from "../../types/types";
+import { SetLoggedIn } from "../../types/types";
 
 
 
 const HeaderLoggedIn = ({ setLoggedIn }: {setLoggedIn: SetLoggedIn}) => {
    
 
-    const logOutHandler = (e: ClickEvent) => {
-        e.preventDefault();
+    const logOutHandler = () => {
        
         axios
         .get("http://localhost:8080/users/logout")
