@@ -6,7 +6,8 @@ export type SetLoggedIn = React.Dispatch<React.SetStateAction<boolean>>;
 export type LoginError = {message:string}
 
 export type SubmitEvent = React.FormEvent<HTMLFormElement>
-export type InputEvent = React.FormEvent<HTMLInputElement> 
+export type InputEvent = React.FormEvent<HTMLInputElement>
+export type ClickEvent =  React.MouseEvent<HTMLElement>
 
 export type SetUserInfo = React.Dispatch<React.SetStateAction<string>>;
 
