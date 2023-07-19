@@ -27,7 +27,7 @@ const [links, setLinks] = useState<ResourcesResponse[]>([])
     return (
         <section className="links">
         {
-         links.map((link) => <Link to={link.link} target="_blank" className="links__link link">
+         links.map((link) => <Link to={link.link} target="_blank" className="links__link link" key={link._id}>
              <p className="links__title paragraph">{link.title}</p>
         </Link>)}
            

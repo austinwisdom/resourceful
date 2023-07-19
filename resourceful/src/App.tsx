@@ -17,9 +17,6 @@ import "@fontsource/lato"
 import "./App.scss";
 import ForbiddenPage from "./pages/ForbiddenPage/ForbiddenPage";
 
-export  type User = {
-  userName: string;
-};
 
 function App() {
 
