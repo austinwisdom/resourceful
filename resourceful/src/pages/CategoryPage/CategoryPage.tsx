@@ -1,10 +1,10 @@
-import "./CategoryPage.scss";
-import Links from "../../components/Links/Links";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import backArrow from "../../assets/images/back-arrow.png";
 import { ResourcesResponse} from "../../types/types";
+import Links from "../../components/Links/Links";
+import backArrow from "../../assets/images/back-arrow.png";
+import "./CategoryPage.scss";
 
 const CategoryPage: React.FC = () => {
   const { id } = useParams();

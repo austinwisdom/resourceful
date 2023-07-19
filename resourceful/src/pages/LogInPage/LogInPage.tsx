@@ -1,12 +1,12 @@
-import "./LogInPage.scss";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios, {AxiosError} from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import { Link, useNavigate } from "react-router-dom";
+import { LoggedIn, SetLoggedIn, LoginError, SubmitEvent, InputEvent, SetUserInfo } from "../../types/types";
 import authIcons from "../../assets/images/auth-icons.png";
 import purpleBlob from "../../assets/images/purple-blob.png";
-import { LoggedIn, SetLoggedIn, LoginError, SubmitEvent, InputEvent, SetUserInfo } from "../../types/types";
+import 'react-toastify/dist/ReactToastify.css';
+import "./LogInPage.scss";
 
 interface Props { 
     setLoggedIn: SetLoggedIn

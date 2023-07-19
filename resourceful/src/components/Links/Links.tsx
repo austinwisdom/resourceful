@@ -1,7 +1,7 @@
-import "./Links.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ResourcesResponse } from "../../types/types";
+import "./Links.scss";
 
 interface Props { 
     data: ResourcesResponse[]

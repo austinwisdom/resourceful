@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import authIcons from "../../assets/images/auth-icons.png";
 import redBlob from "../../assets/images/red-blob.png";
-import { Link } from "react-router-dom";
 import "./SignUpPage.scss";
 
 
