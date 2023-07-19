@@ -16,9 +16,6 @@ import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import "@fontsource/lato"
 import "./App.scss";
 
-export  type User = {
-  userName: string;
-};
 
 function App() {
 
@@ -49,7 +46,7 @@ function App() {
         <Route path="/" element={loggedUser? <Homepage/> : <SignUpPage/>}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}></Route>
-        <Route path="/resources/:id" element={<CategoryPage/>}></Route>
+        <Route path="/resources/:id" element={<CategoryPage loggedUser={loggedUser}/>}></Route>
       </Route>
     )
   );
