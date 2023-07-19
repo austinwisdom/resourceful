@@ -10,6 +10,8 @@ export type InputEvent = React.FormEvent<HTMLInputElement>
 
 export type SetUserInfo = React.Dispatch<React.SetStateAction<string>>;
 
+export type SetBoolean = React.Dispatch<React.SetStateAction<boolean>>;
+
 export interface User { 
     userName:string
 }
