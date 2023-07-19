@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ResourcesResponse} from "../../types/types";
+import { ResourcesResponse, User} from "../../types/types";
+import { getData } from "../../utilities/api";
 import Links from "../../components/Links/Links";
 import backArrow from "../../assets/images/back-arrow.png";
 import "./CategoryPage.scss";
-import { User } from "../../types/types";
-import { getData } from "../../utilities/api";
 
 
 interface Props {
