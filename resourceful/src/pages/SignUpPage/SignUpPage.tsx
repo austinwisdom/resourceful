@@ -1,32 +1,51 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import axios, { AxiosError } from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import { LoginError, SetUserInfo, SetBoolean } from "../../types/types";
 import authIcons from "../../assets/images/auth-icons.png";
 import redBlob from "../../assets/images/red-blob.png";
-import { Link } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
 import "./SignUpPage.scss";
 
 
 const SignUpPage = () => {
 
-    const [firstName, setFirstName]: [username: string, setUsername: React.Dispatch<React.SetStateAction<string>>] = useState("");
-    const [lastName, setLastName]: [password: string, setPassword: React.Dispatch<React.SetStateAction<string>>] = useState("");
-    const [email, setEmail]: [username: string, setUsername: React.Dispatch<React.SetStateAction<string>>] = useState("");
-    const [username, setUsername]: [username: string, setUsername: React.Dispatch<React.SetStateAction<string>>] = useState("");
-    const [password, setPassword]: [password: string, setPassword: React.Dispatch<React.SetStateAction<string>>] = useState("");
+    const navigate =  useNavigate()
+
+    const [firstName, setFirstName]: [username: string, setUsername: SetUserInfo] = useState("");
+    const [lastName, setLastName]: [password: string, setPassword: SetUserInfo] = useState("");
+    const [email, setEmail]: [username: string, setUsername: SetUserInfo] = useState("");
+    const [username, setUsername]: [username: string, setUsername: SetUserInfo] = useState("");
+    const [password, setPassword]: [password: string, setPassword: SetUserInfo] = useState("");
+    const [signedUp, setSignedUp]: [signedUp: boolean, setSignedUp: SetBoolean ] = useState(false)
+
+    const signUpSuccess = () => toast.success("User successfully signed-up!")
+    const signUpFail = (errorMessage: string) => toast.error (`Sign-up failed with error: ${errorMessage}`)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log("click registered")
+
         axios
             .post("http://localhost:8080/users/signup", {firstName: firstName, lastName: lastName, email: email, userName: username, password: password})
-            .then((res) => {
-                console.log(res.data)
+            .then(() => {
+                setSignedUp(true)
+                signUpSuccess()
             })
-            .catch (error => {
-              console.log(error);
+            .catch ((error: AxiosError<LoginError>) => {
+              const errorMessage = error.response?.data?.message ?? "Unknown error occurred";
+              signUpFail(errorMessage)
         })
-        console.log("Worked")
     }
+
+    useEffect(()=> { 
+        if (signedUp) { 
+            const timeout = setTimeout(() => { 
+                navigate("/log-in")
+               }, 3000);
+               return () => clearTimeout(timeout)
+        }
+      }, [signedUp, navigate])
 
     const handleChangeFirstName = (event: React.FormEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -34,7 +53,6 @@ const SignUpPage = () => {
             value: string };
         const value = target.value;
         setFirstName(value);
-        console.log(firstName);
       }
 
     const handleChangeLastName = (event: React.FormEvent<HTMLInputElement>) => {
@@ -43,7 +61,6 @@ const SignUpPage = () => {
           value: string };
       const value = target.value;
       setLastName(value);
-      console.log(lastName);
     }
     
     const handleChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {
@@ -52,7 +69,6 @@ const SignUpPage = () => {
             value: string };
         const value = target.value;
         setUsername(value);
-        console.log(username);
       }
     
     const handleChangeEmail = (event: React.FormEvent<HTMLInputElement>) => {
@@ -61,7 +77,6 @@ const SignUpPage = () => {
           value: string };
       const value = target.value;
       setEmail(value);
-      console.log(email);
     }
 
     const handleChangePassword = (event: React.FormEvent<HTMLInputElement>) => {
@@ -148,6 +163,7 @@ const SignUpPage = () => {
                         <button type="submit" className="sign-up__button primary-button button-large label">Sign up</button> 
                     </div>
             </form>
+            <ToastContainer position="bottom-center" theme="colored" hideProgressBar={true} className="log-in__notification"/>
         </section>
     )}
 

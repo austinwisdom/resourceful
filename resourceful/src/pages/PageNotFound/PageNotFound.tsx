@@ -1,7 +1,7 @@
-import "./PageNotFound.scss";
 import { Link } from "react-router-dom";
 import CSSJedi from "../../assets/images/CSS-jedi.png";
 import blueBlob from "../../assets/images/blue-blob.png";
+import "./PageNotFound.scss";
 
 
 const PageNotFound = () => {

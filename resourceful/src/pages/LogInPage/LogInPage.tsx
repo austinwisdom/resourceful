@@ -1,25 +1,29 @@
-import "./LogInPage.scss";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios, {AxiosError} from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import { Link, useNavigate } from "react-router-dom";
+import { LoggedIn, SetLoggedIn, LoginError, SubmitEvent, InputEvent, SetUserInfo } from "../../types/types";
 import authIcons from "../../assets/images/auth-icons.png";
 import purpleBlob from "../../assets/images/purple-blob.png";
+import 'react-toastify/dist/ReactToastify.css';
+import "./LogInPage.scss";
 
-const LogInPage = ({setLoggedIn, loggedIn}) => {
+interface Props { 
+    setLoggedIn: SetLoggedIn
+    loggedIn: LoggedIn;
+}
+
+const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
     
     const navigate =  useNavigate()
 
-    const [username, setUsername]: [username: string, setUsername: React.Dispatch<React.SetStateAction<string>>] = useState("");
-    const [password, setPassword]: [password: string, setPassword: React.Dispatch<React.SetStateAction<string>>] = useState("");
-
-    type LoginError = {message:string}
+    const [username, setUsername]: [username: string, setUsername: SetUserInfo] = useState("");
+    const [password, setPassword]: [password: string, setPassword: SetUserInfo] = useState("");
 
     const loginSuccess = () => toast.success("User successfully logged in!")
     const loginFail = (errorMessage: string) => toast.error (`Login failed with error: ${errorMessage}`)
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: SubmitEvent) => {
         e.preventDefault();
 
         axios.defaults.withCredentials = true;
@@ -44,7 +48,7 @@ const LogInPage = ({setLoggedIn, loggedIn}) => {
         }
       }, [loggedIn, navigate]) 
       
-      const handleChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {
+      const handleChangeUsername = (event: InputEvent) => {
         event.preventDefault();
         const target = event.target as typeof event.target & {
             value: string };
@@ -52,7 +56,7 @@ const LogInPage = ({setLoggedIn, loggedIn}) => {
         setUsername(value);
       }
 
-      const handleChangePassword = (event: React.FormEvent<HTMLInputElement>) => {
+      const handleChangePassword = (event: InputEvent) => {
         event.preventDefault();
         const target = event.target as typeof event.target & {
             value: string };

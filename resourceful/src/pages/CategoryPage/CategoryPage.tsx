@@ -1,30 +1,39 @@
-import "./CategoryPage.scss";
-import Links from "../../components/Links/Links";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import { ResourcesResponse} from "../../types/types";
+import Links from "../../components/Links/Links";
 import backArrow from "../../assets/images/back-arrow.png";
+import "./CategoryPage.scss";
 
-const CategoryPage = () => {
+const CategoryPage: React.FC = () => {
   const { id } = useParams();
-console.log(id)
-  const [data, setData] = useState(null);
+
+  const [data, setData] = useState<ResourcesResponse[] | null>(null);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await axios.get(`http://localhost:8080/resources/${id}`);
-      setData(data.data);
+      try { 
+        if(id) {
+          const data = await axios.get<ResourcesResponse[]>(`http://localhost:8080/resources/${id}`);
+          setData(data.data);
+        }
+      } catch(error) {
+        console.log(error)
+       }
     };
-    getData();
-  }, []);
+    getData().catch((error) => { 
+      console.log(error)
+    })
+  }, [id]);
 
 const subCategories = () => { 
-        let subcategories = [];
-        data.map((item) => {
+       const subcategories: Array<string> = [];
+        data!.map((item) => {
             subcategories.push(item.subcategory);
         });
     
-        let uniqueSubcat = []
+        const uniqueSubcat: Array<string> = []
         subcategories.forEach((subcat) => { 
         if(!uniqueSubcat.includes(subcat)){ 
             uniqueSubcat.push(subcat)
@@ -42,7 +51,7 @@ const subCategories = () => {
       <div className="category__main-container">
         <div className="category__header">
           <img
-            src={`http://localhost:8080/icons/${id.slice(0,4)}.png`}
+            src={`http://localhost:8080/icons/${id!.slice(0,4)}.png`}
             alt="html and css icons"
             className="category__icon"
           />
@@ -58,7 +67,7 @@ const subCategories = () => {
           </div>))}
         </div>
       </div>
-      <img src={`http://localhost:8080/blobs/${id.slice(0,4)}.png`} alt="red blob" className="category__blob" />
+      <img src={`http://localhost:8080/blobs/${id!.slice(0,4)}.png`} alt="red blob" className="category__blob" />
     </section>
   );
 };

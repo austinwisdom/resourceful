@@ -1,15 +1,19 @@
-import "./Links.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ResourcesResponse } from "../../types/types";
+import "./Links.scss";
 
+interface Props { 
+    data: ResourcesResponse[]
+    subCategory: string
+}
+const Links: React.FC<Props> = ({ data, subCategory }) => {
 
-const Links = ({ data, subCategory }) => {
-
-const [links, setLinks] = useState([])
+const [links, setLinks] = useState<ResourcesResponse[]>([])
 
     useEffect(() => { 
-        const filterData = (data, subCategory) => { 
-                 let uniqueSubcat = []
+        const filterData = (data:ResourcesResponse[], subCategory:string ) => { 
+                 const uniqueSubcat: Array<ResourcesResponse> = []
                  data.forEach((item) => { 
               if (item.subcategory === subCategory) { 
                  uniqueSubcat.push(item)
@@ -18,9 +22,7 @@ const [links, setLinks] = useState([])
              })
          }
          filterData(data,subCategory)
-    },[])
-
-console.log(links)
+    },[data, subCategory])
 
     return (
         <section className="links">
