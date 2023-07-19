@@ -15,15 +15,16 @@ interface Props {
 const CategoryPage: React.FC<Props> = ({loggedUser}) => {
 
     const navigate = useNavigate();
-
-    if (!loggedUser) {
-        navigate("/")
-    }
-
+    
     const { id } = useParams();
 
     const [data, setData] = useState<ResourcesResponse[] | null>(null);
-
+    useEffect(() => {
+        if (!loggedUser) {
+          navigate("/forbidden");
+        }
+      }, [loggedUser, navigate]);
+      
     useEffect(() => {
         const getData = async () => {
         try { 
