@@ -30,7 +30,7 @@ function App() {
     const checkLoggedIn = () => {
       axios.defaults.withCredentials = true;
       axios
-        .get("http://localhost:8080/users")
+        .get("http://3.134.79.195:8080/users")
         .then((res: AxiosResponse<User>) => {
           setLoggedUser(res.data);
         })
