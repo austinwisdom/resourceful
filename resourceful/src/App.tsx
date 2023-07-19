@@ -5,17 +5,17 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import axios, { AxiosResponse, AxiosError } from "axios";
 import { User, SetUser, LoggedIn, SetLoggedIn } from "./types/types";
+import { checkLoggedIn } from "./utilities/api";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import Layout from "./pages/Layout/Layout";
 import Homepage from "./pages/Homepage/Homepage";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import ForbiddenPage from "./pages/ForbiddenPage/ForbiddenPage";
 import "@fontsource/lato"
 import "./App.scss";
-import ForbiddenPage from "./pages/ForbiddenPage/ForbiddenPage";
 
 
 function App() {
@@ -27,18 +27,7 @@ function App() {
   ] = useState<User | "">("");
 
   useEffect(() => {
-    const checkLoggedIn = () => {
-      axios.defaults.withCredentials = true;
-      axios
-        .get("http://localhost:8080/users")
-        .then((res: AxiosResponse<User>) => {
-          setLoggedUser(res.data);
-        })
-        .catch((error:AxiosError) => {
-          console.log(error.response!);
-        });
-    };
-    checkLoggedIn();
+    checkLoggedIn(setLoggedUser);
   },[loggedIn]);
 
   const browserRoutes = createBrowserRouter(
