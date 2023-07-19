@@ -8,10 +8,14 @@ import "./CategoryPage.scss";
 import { User } from "../../types/types";
 
 
-const CategoryPage = ({loggedUser}: {loggedUser: User}) => {
+interface Props {
+    loggedUser: User | ""
+}
+
+const CategoryPage: React.FC<Props> = ({loggedUser}) => {
 
     const navigate = useNavigate();
-    
+
     if (!loggedUser) {
         navigate("/")
     }
