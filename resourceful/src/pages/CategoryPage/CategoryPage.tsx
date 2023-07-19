@@ -80,7 +80,7 @@ const CategoryPage: React.FC<Props> = ({loggedUser}) => {
             </div>))}
             </div>
         </div>
-        <img src={`http://3.134.79.195:8080/blobs/${id!.slice(0,4)}.png`} alt="red blob" className="category__blob" />
+        <img src={`https://3.134.79.195:8080/blobs/${id!.slice(0,4)}.png`} alt="red blob" className="category__blob" />
         </section>
     );
 };

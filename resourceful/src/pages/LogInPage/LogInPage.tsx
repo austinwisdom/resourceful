@@ -28,7 +28,7 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
 
         axios.defaults.withCredentials = true;
         axios
-        .post("http://3.134.79.195:8080/users/login", {userName: username, password: password})
+        .post("https://3.134.79.195:8080/users/login", {userName: username, password: password})
         .then(() => {
             setLoggedIn(true);
             loginSuccess();  
