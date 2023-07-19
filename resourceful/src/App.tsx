@@ -15,10 +15,12 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import "@fontsource/lato"
 
+export  type User = {
+  userName: string;
+};
+
 function App() {
-  type User = {
-    userName: string;
-  };
+ 
   type SetUser = (user: User | "") => void;
   type LoggedIn = boolean 
   type SetLoggedIn = React.Dispatch<React.SetStateAction<boolean>>
@@ -46,7 +48,7 @@ function App() {
 
   const browserRoutes = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />} errorElement={<PageNotFound />}>
+      <Route path="/" element={<Layout loggedUser={loggedUser} setLoggedIn={setLoggedIn}/>} errorElement={<PageNotFound />}>
         <Route path="/" element={loggedUser? <Homepage/> : <SignUpPage/>}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}></Route>

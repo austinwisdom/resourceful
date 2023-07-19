@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import HeaderLoggedIn from "../../components/Header/HeaderLoggedIn";
+import { User } from "../../App";
 
-const Layout = () => {
+
+const Layout = ({ loggedUser, setLoggedIn}: {loggedUser: User | "", setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>} ) => {
     return (
         <>
-            <Header />
+            {loggedUser? <HeaderLoggedIn setLoggedIn={setLoggedIn}/> : <Header />}
             <Outlet />
         </>
     );
