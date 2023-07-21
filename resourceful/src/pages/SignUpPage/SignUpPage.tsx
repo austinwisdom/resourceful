@@ -27,7 +27,7 @@ const SignUpPage = () => {
         e.preventDefault()
 
         axios
-            .post("https://3.134.79.195:8080/users/signup", {firstName: firstName, lastName: lastName, email: email, userName: username, password: password})
+            .post("https://backend.resourceful.tips/users/signup", {firstName: firstName, lastName: lastName, email: email, userName: username, password: password})
             .then(() => {
                 setSignedUp(true)
                 signUpSuccess()

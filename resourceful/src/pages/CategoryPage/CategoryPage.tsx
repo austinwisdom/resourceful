@@ -28,7 +28,7 @@ const CategoryPage: React.FC<Props> = ({loggedUser}) => {
         const getData = async () => {
         try { 
             if(id) {
-            const data = await axios.get<ResourcesResponse[]>(`http://3.134.79.195:8080/resources/${id}`);
+            const data = await axios.get<ResourcesResponse[]>(`https://backend.resourceful.tips/resources/${id}`);
             setData(data.data);
             }
         } catch(error) {
@@ -64,7 +64,7 @@ const CategoryPage: React.FC<Props> = ({loggedUser}) => {
         <div className="category__main-container">
             <div className="category__header">
             <img
-                src={`http://3.134.79.195:8080/icons/${id!.slice(0,4)}.png`}
+                src={`https://backend.resourceful.tips/icons/${id!.slice(0,4)}.png`}
                 alt="html and css icons"
                 className="category__icon"
             />
@@ -80,7 +80,7 @@ const CategoryPage: React.FC<Props> = ({loggedUser}) => {
             </div>))}
             </div>
         </div>
-        <img src={`https://3.134.79.195:8080/blobs/${id!.slice(0,4)}.png`} alt="red blob" className="category__blob" />
+        <img src={`https://backend.resourceful.tips/blobs/${id!.slice(0,4)}.png`} alt="red blob" className="category__blob" />
         </section>
     );
 };
