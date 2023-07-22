@@ -1,26 +1,10 @@
-import "./Header.scss";
 import { Link } from "react-router-dom";
+import { SetLoggedIn} from "../../types/types";
+import { logOutHandler } from "../../utilities/handlers";
 import logo from "../../assets/images/Logo.svg";
-import axios, { AxiosError } from "axios";
-import { SetLoggedIn } from "../../types/types";
-
-
+import "./Header.scss";
 
 const HeaderLoggedIn = ({ setLoggedIn }: {setLoggedIn: SetLoggedIn}) => {
-   
-
-    const logOutHandler = () => {
-       
-        axios
-        .get("http://localhost:8080/users/logout")
-        .then(() => {
-            setLoggedIn(false);
-            window.location.reload() 
-        })
-        .catch ((error: AxiosError) => {
-            console.error(error)
-        })
-      }  
 
     return (
         <header className="header">
@@ -28,7 +12,7 @@ const HeaderLoggedIn = ({ setLoggedIn }: {setLoggedIn: SetLoggedIn}) => {
             <img src={logo} alt="logo" className="header__logo"/>
         </Link>
         <div className="header__buttons">
-            <button className="header__button primary-button button-small label" onClick={logOutHandler}>Log out</button>
+            <button className="header__button primary-button button-small label" onClick={(e) => logOutHandler(e, setLoggedIn)}>Log out</button>
         </div>
     </header>
     )

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ResourcesResponse} from "../../types/types";
+import { ResourcesResponse, User} from "../../types/types";
+import { getData } from "../../utilities/api";
 import Links from "../../components/Links/Links";
 import backArrow from "../../assets/images/back-arrow.png";
 import "./CategoryPage.scss";
-import { User } from "../../types/types";
 
 
 interface Props {
@@ -15,29 +14,21 @@ interface Props {
 const CategoryPage: React.FC<Props> = ({loggedUser}) => {
 
     const navigate = useNavigate();
-
-    if (!loggedUser) {
-        navigate("/forbidden")
-    }
-
+    
     const { id } = useParams();
 
     const [data, setData] = useState<ResourcesResponse[] | null>(null);
+    
+    useEffect(() => {
+        if (!loggedUser) {
+          navigate("/forbidden");
+        }
+      }, [loggedUser, navigate]);
 
     useEffect(() => {
-        const getData = async () => {
-        try { 
-            if(id) {
-            const data = await axios.get<ResourcesResponse[]>(`http://localhost:8080/resources/${id}`);
-            setData(data.data);
-            }
-        } catch(error) {
-            console.log(error)
+        if (id) { 
+            getData(id, setData)
         }
-        };
-        getData().catch((error) => { 
-        console.log(error)
-        })
     }, [id]);
 
     const subCategories = () => { 
