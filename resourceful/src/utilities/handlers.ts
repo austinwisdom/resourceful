@@ -9,6 +9,8 @@ import {
 } from "../types/types";
 import { toast } from "react-toastify";
 
+const backendURI = import.meta.env.VITE_BACKEND_URI
+
 export const signupSubmit = (
   e: SubmitEvent,
   firstName: string,
@@ -21,7 +23,7 @@ export const signupSubmit = (
   e.preventDefault();
 
   axios
-    .post("http://localhost:8080/users/signup", {
+    .post(`${backendURI}/users/signup`, {
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -40,7 +42,7 @@ export const signupSubmit = (
 };
 
 export const inputValue = (e: InputEvent) => {
-  const value = e.target.value;
+  const value  = e.target.value;
   return value;
 };
 
@@ -54,7 +56,7 @@ export const signinSubmit = (
 
   axios.defaults.withCredentials = true;
   axios
-    .post("http://localhost:8080/users/login", {
+    .post(`${backendURI}/users/login`, {
       userName: username,
       password: password,
     })
@@ -73,7 +75,7 @@ export const logOutHandler = (e: ClickEvent, setLoggedIn:SetLoggedIn) => {
     e.preventDefault();
    
     axios
-    .get("http://localhost:8080/users/logout")
+    .get(`${backendURI}/users/logout`)
     .then(() => {
         setLoggedIn(false);
         window.location.reload() 
