@@ -1,10 +1,12 @@
 import axios, {AxiosResponse, AxiosError} from "axios";
 import { User, SetUser, ResourcesResponse } from "../types/types";
 
+const backendURI = import.meta.env.VITE_BACKEND_URI
+
 export const checkLoggedIn = (setLoggedUser:SetUser) => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:8080/users")
+      .get(`${backendURI}/users`)
       .then((res: AxiosResponse<User>) => {
         setLoggedUser(res.data);
       })
@@ -15,7 +17,7 @@ export const checkLoggedIn = (setLoggedUser:SetUser) => {
 
   export const getData = (id: string, setData:(response: ResourcesResponse[] | null) => void) => {
     axios
-    .get<ResourcesResponse[]>(`http://localhost:8080/resources/${id}`)
+    .get<ResourcesResponse[]>(`${backendURI}/resources/${id}`)
     .then((res: AxiosResponse<ResourcesResponse[]>) => { 
         if(id) { 
             setData(res.data)

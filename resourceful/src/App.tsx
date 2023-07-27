@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -19,7 +20,7 @@ import "./App.scss";
 
 
 function App() {
-
+  const backendURI = import.meta.env.VITE_BACKEND_URI
   const [loggedIn, setLoggedIn]: [loggedIn: LoggedIn, setLoggedIn: SetLoggedIn ] = useState(false)
   const [loggedUser, setLoggedUser]: [
     loggedUser: User | "",
@@ -29,14 +30,22 @@ function App() {
   useEffect(() => {
     checkLoggedIn(setLoggedUser);
   },[loggedIn]);
-
+ 
   const browserRoutes = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout loggedUser={loggedUser} setLoggedIn={setLoggedIn}/>} errorElement={<PageNotFound />}>
+      <Route path="/" element={<Layout loggedUser={loggedUser} setLoggedIn={setLoggedIn}/>} errorElement={<PageNotFound/>} >
         <Route path="/" element={loggedUser? <Homepage/> : <SignUpPage/>}></Route>
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/log-in" element={<LogInPage setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}></Route>
-        <Route path="/resources/:id" element={<CategoryPage loggedUser={loggedUser}/>}></Route>
+        <Route 
+        path="/resources/:id" 
+        element={loggedUser ? <CategoryPage/>: <ForbiddenPage/>}
+        loader={({ params }) => {
+          const id = params.id 
+          return axios.get(`${backendURI}/resources/${id != undefined ? id: ""}`)    
+          }}
+        >
+        </Route>
         <Route path="/forbidden" element={<ForbiddenPage/>}></Route>
       </Route>
     )
