@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import axios, {AxiosError} from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { Link, useNavigate } from "react-router-dom";
-import { LoggedIn, SetLoggedIn, LoginError, SubmitEvent, InputEvent, SetUserInfo } from "../../types/types";
+import { LoggedIn, SetLoggedIn, SetUserInfo } from "../../types/types";
 import authIcons from "../../assets/images/auth-icons.png";
 import purpleBlob from "../../assets/images/purple-blob.png";
 import 'react-toastify/dist/ReactToastify.css';
 import "./LogInPage.scss";
+import { inputValue, signinSubmit } from "../../utilities/handlers";
 
 interface Props { 
     setLoggedIn: SetLoggedIn
@@ -19,6 +19,7 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
 
     const [username, setUsername]: [username: string, setUsername: SetUserInfo] = useState("");
     const [password, setPassword]: [password: string, setPassword: SetUserInfo] = useState("");
+<<<<<<< HEAD
 
     const loginSuccess = () => toast.success("User successfully logged in!")
     const loginFail = (errorMessage: string) => toast.error (`Login failed with error: ${errorMessage}`)
@@ -62,7 +63,17 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
             value: string };
         const value = target.value;
         setPassword(value);
+=======
+    
+    useEffect(()=> { 
+      if (loggedIn) { 
+          const timeout = setTimeout(() => { 
+              navigate("/")
+             }, 3000);
+             return () => clearTimeout(timeout)
+>>>>>>> dev
       }
+    }, [loggedIn, navigate])
 
     return (
         <section className="log-in">
@@ -70,7 +81,7 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
                 <img src={authIcons} alt="icons" className="log-in__img-icons"/>
                 <img src={purpleBlob} alt="blob" className="log-in__blob"/>
             </div>
-            <form className="log-in__form" onSubmit={handleSubmit}>
+            <form className="log-in__form" onSubmit={(e)=> signinSubmit(e,username,password,setLoggedIn)}>
                 <div className="log-in__header">
                     <h1 className="log-in__title page-header">Welcome back</h1>
                     <p className="log-in__subheader paragraph">First time here?
@@ -87,7 +98,7 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
                             id="userName" 
                             className="form-field"
                             value={username}
-                            onChange={handleChangeUsername}
+                            onChange={(e) => setUsername(inputValue(e)) }
                         />
                     </div>
                     <div className="log-in__field-container">
@@ -98,7 +109,7 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
                             id="password" 
                             className="form-field"
                             value={password}
-                            onChange={handleChangePassword}
+                            onChange={(e) => setPassword(inputValue(e))}
                         />
                     </div>
                     <div className="log-in__buttons">
