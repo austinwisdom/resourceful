@@ -26,7 +26,7 @@ const Homepage = () => {
                     <div className="homepage__icons">
                         <img src={`https://backend.resourceful.tips/icons/REAC.png`} alt="react icon" className="homepage__icons-detail"/>
                     </div>
-                    <h3 className="homepage__category-title category-title">ReactJS</h3>
+                    <h3 className="homepage__category-title category-title">React.JS</h3>
                 </div>
                 <img src={`https://backend.resourceful.tips/blobs/REAC.png`} alt="floating blob" className="homepage__floating-blob"/> 
             </Link>
