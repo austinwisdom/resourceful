@@ -2,7 +2,7 @@
   deployment:
     tasks: 
       - export DEPLOYPATH=/home/resorlbv/public_html/
-      - /bin/cp -R .vscode $DEPLOYPATH
+      - /bin/cp * $DEPLOYPATH
       - /bin/cp -R assets $DEPLOYPATH
       - /bin/cp -R css $DEPLOYPATH
       - /bin/cp -R fonts $DEPLOYPATH
