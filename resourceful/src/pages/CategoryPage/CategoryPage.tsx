@@ -1,18 +1,29 @@
+import { useState } from "react";
 import { useParams, Link, useLoaderData } from "react-router-dom";
 import Links from "../../components/Links/Links";
 import backArrow from "../../assets/images/back-arrow.png";
 import { ResourcesResponse } from "../../types/types";
 import "./CategoryPage.scss";
 import { AxiosResponse } from "axios";
+import Search from "../../components/Search/Search";
 
 const CategoryPage: React.FC = () => {
   const { id } = useParams();
+
+  const [search, setSearch] = useState("");
   const response = useLoaderData() as AxiosResponse;
   const data = response.data as ResourcesResponse[];
+  const filteredData = data?.filter((resource: ResourcesResponse) => {
+    if (search === "") {
+      return true;
+    } else {
+      return resource.title.toLowerCase().includes(search) || resource.subcategory.toLowerCase().includes(search);
+    }
+  });
 
   const subCategories = () => {
     const subcategories: Array<string> = [];
-    data.map((item) => {
+    filteredData.map((item) => {
       subcategories.push(item.subcategory);
     });
 
@@ -27,6 +38,7 @@ const CategoryPage: React.FC = () => {
 
   return (
     <section className="category">
+      <Search setSearch={setSearch} />
       <Link to="/" className="category__link">
         <img
           src={backArrow}
@@ -42,18 +54,20 @@ const CategoryPage: React.FC = () => {
             alt="html and css icons"
             className="category__icon"
           />
-          {data && (
-            <h2 className="category__title title">{data[0].category}</h2>
-          )}
+          {filteredData && filteredData.length !== 0 ? (
+            <h2 className="category__title title">
+              {filteredData[0].category}
+            </h2>
+          ): <h2 className = "category__title title">No results found</h2>}
         </div>
         <div className="category__content-wrapper">
-          {data &&
+          {filteredData && filteredData.length !== 0 ?
             subCategories().map((item, index) => (
               <div key={index} className="category__subsection">
                 <h4 className="category__subtitle subtitle">{item}</h4>
-                <Links data={data} subCategory={item} />
+                <Links data={filteredData} subCategory={item} />
               </div>
-            ))}
+            )): null}
         </div>
       </div>
       <img
