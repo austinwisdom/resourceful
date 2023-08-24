@@ -87,6 +87,7 @@ export const logOutHandler = (e: ClickEvent, setLoggedIn: SetLoggedIn) => {
 };
 
 export const searchHandler = (e: InputEvent, setSearch: SetSearch) => {
+  console.log(e.target, e.target.value)
   const lowerCase = e.target.value.toLowerCase();
   setSearch(lowerCase);
 };
