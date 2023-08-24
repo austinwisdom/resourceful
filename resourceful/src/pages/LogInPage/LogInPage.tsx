@@ -19,51 +19,6 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
 
     const [username, setUsername]: [username: string, setUsername: SetUserInfo] = useState("");
     const [password, setPassword]: [password: string, setPassword: SetUserInfo] = useState("");
-<<<<<<< HEAD
-
-    const loginSuccess = () => toast.success("User successfully logged in!")
-    const loginFail = (errorMessage: string) => toast.error (`Login failed with error: ${errorMessage}`)
-
-    const handleSubmit = (e: SubmitEvent) => {
-        e.preventDefault();
-
-        axios.defaults.withCredentials = true;
-        axios
-        .post("https://backend.resourceful.tips/users/login", {userName: username, password: password})
-        .then(() => {
-            setLoggedIn(true);
-            loginSuccess();  
-        })
-        .catch ((error: AxiosError<LoginError>) => {
-            const errorMessage = error.response?.data?.message ?? "Unknown error occurred";
-            loginFail(errorMessage)
-        })
-      }  
-
-      useEffect(()=> { 
-        if (loggedIn) { 
-            const timeout = setTimeout(() => { 
-                navigate("/")
-               }, 3000);
-               return () => clearTimeout(timeout)
-        }
-      }, [loggedIn, navigate]) 
-      
-      const handleChangeUsername = (event: InputEvent) => {
-        event.preventDefault();
-        const target = event.target as typeof event.target & {
-            value: string };
-        const value = target.value;
-        setUsername(value);
-      }
-
-      const handleChangePassword = (event: InputEvent) => {
-        event.preventDefault();
-        const target = event.target as typeof event.target & {
-            value: string };
-        const value = target.value;
-        setPassword(value);
-=======
     
     useEffect(()=> { 
       if (loggedIn) { 
@@ -71,7 +26,6 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
               navigate("/")
              }, 3000);
              return () => clearTimeout(timeout)
->>>>>>> dev
       }
     }, [loggedIn, navigate])
 

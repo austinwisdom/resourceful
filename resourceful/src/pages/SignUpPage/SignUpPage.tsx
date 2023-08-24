@@ -18,52 +18,6 @@ const SignUpPage = () => {
     const [username, setUsername]: [username: string, setUsername: SetUserInfo] = useState("");
     const [password, setPassword]: [password: string, setPassword: SetUserInfo] = useState("");
     const [signedUp, setSignedUp]: [signedUp: boolean, setSignedUp: SetBoolean ] = useState(false)
-<<<<<<< HEAD
-
-    const signUpSuccess = () => toast.success("User successfully signed-up!")
-    const signUpFail = (errorMessage: string) => toast.error (`Sign-up failed with error: ${errorMessage}`)
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-
-        axios
-            .post("https://backend.resourceful.tips/users/signup", {firstName: firstName, lastName: lastName, email: email, userName: username, password: password})
-            .then(() => {
-                setSignedUp(true)
-                signUpSuccess()
-            })
-            .catch ((error: AxiosError<LoginError>) => {
-              const errorMessage = error.response?.data?.message ?? "Unknown error occurred";
-              signUpFail(errorMessage)
-        })
-    }
-
-    useEffect(()=> { 
-        if (signedUp) { 
-            const timeout = setTimeout(() => { 
-                navigate("/log-in")
-               }, 3000);
-               return () => clearTimeout(timeout)
-        }
-      }, [signedUp, navigate])
-
-    const handleChangeFirstName = (event: React.FormEvent<HTMLInputElement>) => {
-        event.preventDefault();
-        const target = event.target as typeof event.target & {
-            value: string };
-        const value = target.value;
-        setFirstName(value);
-      }
-
-    const handleChangeLastName = (event: React.FormEvent<HTMLInputElement>) => {
-      event.preventDefault();
-      const target = event.target as typeof event.target & {
-          value: string };
-      const value = target.value;
-      setLastName(value);
-    }
-=======
->>>>>>> dev
     
       useEffect(()=> { 
           if (signedUp) { 
