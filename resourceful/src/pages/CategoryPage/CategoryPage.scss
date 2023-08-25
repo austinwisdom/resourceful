@@ -8,6 +8,11 @@
     @include mobile {
         padding: 2rem;
     }
+    @include tablet {
+        padding: 2rem;
+        margin: auto;
+        max-width: 50rem;
+    }
     &__navigation {
         @include flex (space-between);
         gap: 2rem;
@@ -25,6 +30,10 @@
         height: 80vh;
         @include mobile {
             padding: 1rem 2rem;
+            height: 60vh;
+        }
+        @include tablet {
+            height: 100vh;
         }
     }
     &__header {
@@ -53,6 +62,12 @@
             border-radius: 5px;
             background: rgba(255, 255, 255, 0.50);
         }
+        @include mobile {
+            height: 40vh;
+        }
+        @include tablet {
+            height: 80vh;
+        }
     }
     &__subtitle {
         padding: 0.5rem 0;
@@ -75,6 +90,11 @@
         width: 60vw;
         animation: $float;
         @include mobile {
+            width: 100%;
+            top: 12rem;
+            left: 0;
+        }
+        @include tablet {
             width: 100%;
             top: 10rem;
             left: 0;

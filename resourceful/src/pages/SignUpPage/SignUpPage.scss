@@ -10,6 +10,11 @@
         padding: 1rem;
         @include flex (center, flex-start)
     }
+    @include tablet {
+        position: relative;
+        padding: 10rem 2rem;
+        @include flex (center, flex-start)
+    }
     &__img-wrapper {
         position: relative;
         @include mobile {
@@ -26,12 +31,42 @@
             animation: $float;
         }
     }
+    &__tablet-top {
+        display: none;
+        @include mobile {
+            display: none;
+        }
+        @include tablet {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: auto;
+            z-index: 2;
+        }
+    }
+    &__tablet-bottom {
+        display: none;
+        @include mobile {
+            display: none;
+        }
+        @include tablet {
+            display: block;
+            position: absolute;
+            bottom: -0.75rem;
+            left: auto;
+            z-index: 2;
+        }
+    }
     &__blob {
         position: absolute;
         top: 4rem;
         left: 2rem;
         z-index: -1;
         animation: $float;
+        @include tablet {
+            left: auto;
+            transform: translate(-50%, 0);
+        }
     }
     &__img-icons {
         position: relative;
@@ -39,6 +74,9 @@
         left: 3rem;
         z-index: 2;
         @include mobile {
+            display: none;
+        }
+        @include tablet {
             display: none;
         }
     }
@@ -53,6 +91,10 @@
             max-width: 25rem;
             padding: 2rem;
         }
+        @include tablet {
+            width: 100%;
+            max-width: 50rem;
+        }
     }
     &__title {
         margin: 0;
@@ -66,6 +108,9 @@
         @include flex (space-between);
         gap: 1rem;
         @include mobile {
+            @include flex (flex-start, center, column);
+        }
+        @include tablet {
             @include flex (flex-start, center, column);
         }
     }

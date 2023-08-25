@@ -6,6 +6,8 @@ import {  SetUserInfo, SetBoolean} from "../../types/types";
 import authIcons from "../../assets/images/auth-icons.png";
 import redBlob from "../../assets/images/red-blob.png";
 import mobileBlobs from "../../assets/images/mobile-sign-up.png";
+import tabletBlobsTop from "../../assets/images/icons-tablet-top.png";
+import tabletBlobsBottom from "../../assets/images/icons-tablet-bottom.png";
 import 'react-toastify/dist/ReactToastify.css';
 import "./SignUpPage.scss";
 
@@ -32,6 +34,8 @@ const SignUpPage = () => {
     return (
         <section className="sign-up">
             <img src={mobileBlobs} alt="blobs" className="sign-up__mobile-blobs"/>
+            <img src={tabletBlobsTop} alt="blobs" className="sign-up__tablet-top"/>
+            <img src={tabletBlobsBottom} alt="blobs" className="sign-up__tablet-bottom"/>
             <div className="sign-up__img-wrapper">
                 <img src={authIcons} alt="icons" className="sign-up__img-icons"/>
                 <img src={redBlob} alt="blob" className="sign-up__blob"/>
