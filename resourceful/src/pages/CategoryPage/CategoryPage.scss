@@ -3,15 +3,19 @@
 
 
 .category {
-    padding: 5rem 8rem;
+    padding: 2rem 8rem;
     position: relative;
+    &__navigation {
+        @include flex (space-between);
+        gap: 2rem;
+    }
     &__link {
-        position: absolute;
-        top: 0;
-        left: 8rem;
+        // position: absolute;
+        // top: 0;
+        // left: 8rem;
     }
     &__back-arrow {
-        height: 2rem;
+        height: 3.125rem;
     }
     &__main-container {
         @include glass-div;
@@ -54,7 +58,7 @@
     }
     &__blob {
         position: absolute;
-        top: 10rem;
+        top: 6rem;
         left: 16rem;
         z-index: -1;
         width: 60vw;

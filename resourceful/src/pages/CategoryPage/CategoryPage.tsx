@@ -38,15 +38,16 @@ const CategoryPage: React.FC = () => {
 
   return (
     <section className="category">
-      <Search setSearch={setSearch} />
-      <Link to="/" className="category__link">
-        <img
-          src={backArrow}
-          alt="back arrow"
-          className="category__back-arrow"
-        />
-      </Link>
-
+        <div className="category__navigation">
+            <Link to="/" className="category__link">
+                <img
+                    src={backArrow}
+                    alt="back arrow"
+                    className="category__back-arrow"
+                />
+            </Link>
+            <Search setSearch={setSearch} />
+        </div>
       <div className="category__main-container">
         <div className="category__header">
           <img

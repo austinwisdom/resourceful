@@ -7,6 +7,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8rem;
+    @include mobile {
+        padding: 4rem;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4rem;
+    }
     &__category-container {
         position: relative;
         margin-bottom: 2rem;
@@ -36,5 +42,8 @@
         left: 1rem;
         z-index: -1;
         animation: $float;
+        @include mobile {
+            top: 0;
+        }
     }
 }
