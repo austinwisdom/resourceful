@@ -7,10 +7,16 @@
     width: 100%;
     padding: 8rem;
     position: relative;
+    @include mobile {
+        padding: 1rem;
+    }
     &__message-container {
         @include glass-div;
         padding: 4rem 6rem;
-        @include flex (center, center, column)
+        @include flex (center, center, column);
+        @include mobile {
+            padding: 1rem 2rem;
+        }
     }
     &__random {
         @include flex (center, center, column)
@@ -24,14 +30,19 @@
     }
     &__message {
         margin: 0.5rem;
+        text-align: center;
     }
     &__floating-blob {
         position: absolute;
-        top: 4rem;
-        left: 25vw;
+        transform: translate(-50%, 0);
         z-index: -1;
         width: 50%;
         animation: $float;
+        @include mobile {
+            width: 100%;
+            max-width: 25rem;
+            transform: translate(-50%, 0);
+        }
     }
 }
 

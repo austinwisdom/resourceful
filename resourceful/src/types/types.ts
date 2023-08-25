@@ -10,6 +10,7 @@ export type InputEvent = React.ChangeEvent<HTMLInputElement>;
 export type ClickEvent = React.MouseEvent<HTMLElement>;
 
 export type SetUserInfo = React.Dispatch<React.SetStateAction<string>>;
+export type SetSearch = React.Dispatch<React.SetStateAction<string>>;
 
 export type SetBoolean = React.Dispatch<React.SetStateAction<boolean>>;
 
@@ -17,7 +18,7 @@ export interface User {
   userName: string;
 }
 export interface ResourcesResponse {
-  _id: string;
+  _id?: string;
   title: string;
   link: string;
   category: string;

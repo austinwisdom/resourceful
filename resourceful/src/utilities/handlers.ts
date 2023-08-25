@@ -5,11 +5,12 @@ import {
   InputEvent,
   SubmitEvent,
   SetLoggedIn,
-  ClickEvent
+  ClickEvent,
+  SetSearch,
 } from "../types/types";
 import { toast } from "react-toastify";
 
-const backendURI = import.meta.env.VITE_BACKEND_URI
+const backendURI = import.meta.env.VITE_BACKEND_URI;
 
 export const signupSubmit = (
   e: SubmitEvent,
@@ -42,7 +43,7 @@ export const signupSubmit = (
 };
 
 export const inputValue = (e: InputEvent) => {
-  const value  = e.target.value;
+  const value = e.target.value;
   return value;
 };
 
@@ -71,16 +72,22 @@ export const signinSubmit = (
     });
 };
 
-export const logOutHandler = (e: ClickEvent, setLoggedIn:SetLoggedIn) => {
-    e.preventDefault();
-   
-    axios
+export const logOutHandler = (e: ClickEvent, setLoggedIn: SetLoggedIn) => {
+  e.preventDefault();
+
+  axios
     .get(`${backendURI}/users/logout`)
     .then(() => {
-        setLoggedIn(false);
-        window.location.reload() 
+      setLoggedIn(false);
+      window.location.reload();
     })
-    .catch ((error: AxiosError) => {
-        console.error(error)
-    })
-  } 
+    .catch((error: AxiosError) => {
+      console.error(error);
+    });
+};
+
+export const searchHandler = (e: InputEvent, setSearch: SetSearch) => {
+  console.log(e.target, e.target.value)
+  const lowerCase = e.target.value.toLowerCase();
+  setSearch(lowerCase);
+};

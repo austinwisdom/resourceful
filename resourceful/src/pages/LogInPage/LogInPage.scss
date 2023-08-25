@@ -5,15 +5,32 @@
 .log-in {
     padding: 1rem 8rem;
     @include flex (center, center);
+    @include mobile {
+        position: relative;
+        padding: 1rem;
+        @include flex (center, flex-start)
+    }
     &__img-wrapper {
         position: relative;
+        @include mobile {
+            display: none;
+        }
     }
     &__blob {
         position: absolute;
-        top: 2rem;
-        left: 2rem;
+        transform: translate(-50%, 0);
         z-index: -1;
         animation: $float;
+    }
+    &__mobile-blobs {
+        display: none;
+        @include mobile {
+            display: block;
+            position: absolute;
+            transform: translate(-50%, 0);
+            z-index: -1;
+            animation: $float;
+        }
     }
     &__img-icons {
         position: relative;
@@ -28,6 +45,11 @@
         padding: 2rem 5rem;
         @include flex (flex-start, center, column);
         gap: 1rem;
+        @include mobile {
+            width: 100%;
+            max-width: 25rem;
+            padding: 2rem;
+        }
     }
     &__title {
         margin: 0;
@@ -49,11 +71,16 @@
         gap: 2rem;
         width: 100%;
         margin: 1.5rem 0;
+        @include mobile {
+            max-width: 25rem;
+        }
     }
     &__button {
         margin-top: 1rem;
+        @include mobile {
+            width: 95%;
+        }
     }
-   
 }
 
 .Toastify__toast-body { 
