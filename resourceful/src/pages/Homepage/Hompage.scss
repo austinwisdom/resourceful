@@ -7,15 +7,30 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8rem;
+    @include mobile {
+        padding: 2rem;
+        margin-block-start: 2rem;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 6rem;
+    }
     &__category-container {
         position: relative;
         margin-bottom: 2rem;
+        @include mobile {
+            @include flex (center, center);
+        }
     }
     &__category {
         position: relative;
         @include glass-div;
         padding: 2rem;
         text-align: center;
+        @include mobile {
+            max-width: 20rem;
+            @include flex (center, center);
+            min-width: 12.5rem;
+        }
     }
     &__category-title {
         margin-top: 4rem;
@@ -25,6 +40,10 @@
         top: -3rem;
         left: -4rem;
         z-index: 2;
+        @include mobile {
+            top: -2rem;
+            left: -2rem;
+        }
     }
     &__icons-detail {
         padding: 0 2rem;
@@ -36,5 +55,10 @@
         left: 1rem;
         z-index: -1;
         animation: $float;
+        @include mobile {
+            left: auto;
+            transform: translate(-50%, 0);
+            max-width: 18rem;
+        }
     }
 }

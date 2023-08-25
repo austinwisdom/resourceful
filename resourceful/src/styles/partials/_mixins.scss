@@ -38,3 +38,17 @@
     width: $width;
     height: $height;
 }
+
+//Mixins responsive design//
+
+@mixin mobile {
+    @media (max-width: $tablet-size) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $desktop-size) {
+        @content;
+    }
+}

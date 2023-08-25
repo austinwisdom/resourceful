@@ -7,18 +7,30 @@
 
 .title {
     @include font (2rem, 700);
+    @include mobile {
+        @include font (1.125rem, 700)
+    }
 }
 
 .category-title {
     @include font (1.5rem, 700);
+    @include mobile {
+        @include font (1.125rem, 700);
+    }
 }
 
 .subtitle {
     @include font (1.25rem, 700);
+    @include mobile {
+        @include font (1rem, 700);
+    }
 }
 
 .paragraph {
     @include font (1rem, 400);
+    @include mobile {
+        @include font (.875rem, 400);
+    }
 }
 
 .label {

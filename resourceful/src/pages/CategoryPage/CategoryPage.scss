@@ -3,21 +3,29 @@
 
 
 .category {
-    padding: 5rem 8rem;
+    padding: 2rem 8rem;
     position: relative;
-    &__link {
-        position: absolute;
-        top: 0;
-        left: 8rem;
+    @include mobile {
+        padding: 2rem;
+    }
+    &__navigation {
+        @include flex (space-between);
+        gap: 2rem;
+        @include mobile {
+            gap: 1rem;
+        }
     }
     &__back-arrow {
-        height: 2rem;
+        height: 3.125rem;
     }
     &__main-container {
         @include glass-div;
         padding: 2rem 4rem;
         position: relative;
         height: 80vh;
+        @include mobile {
+            padding: 1rem 2rem;
+        }
     }
     &__header {
         @include flex (flex-start);
@@ -26,9 +34,13 @@
         padding-left: 8rem;
         margin: 0;
         margin-bottom: 1rem;
+        @include mobile {
+            padding-left: 7rem;
+        }
     }
     &__content-wrapper {
         overflow-y: scroll;
+        overflow-x: hidden;
         height: 60vh;
         &::-webkit-scrollbar {
             width: .625rem;
@@ -51,13 +63,21 @@
         position: absolute;
         top: -2rem;
         left: -2rem;
+        @include mobile {
+            height: 6rem;
+        }
     }
     &__blob {
         position: absolute;
-        top: 10rem;
+        top: 6rem;
         left: 16rem;
         z-index: -1;
         width: 60vw;
         animation: $float;
+        @include mobile {
+            width: 100%;
+            top: 10rem;
+            left: 0;
+        }
     }
 }

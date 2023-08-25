@@ -11,9 +11,7 @@ const HeaderLoggedIn = ({ setLoggedIn }: {setLoggedIn: SetLoggedIn}) => {
         <Link to="/" className="header__logo-link">
             <img src={logo} alt="logo" className="header__logo"/>
         </Link>
-        <div className="header__buttons">
-            <button className="header__button primary-button button-small label" onClick={(e) => logOutHandler(e, setLoggedIn)}>Log out</button>
-        </div>
+        <button className="header__button primary-button button-small label" onClick={(e) => logOutHandler(e, setLoggedIn)}>Log out</button>
     </header>
     )
 }
