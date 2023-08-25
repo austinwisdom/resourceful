@@ -37,7 +37,10 @@
 }
 
 .button-medium {
-    @include size (8rem, 2.5rem)
+    @include size (8rem, 2.5rem);
+    @include mobile {
+        @include size(6rem, 2.5rem);
+    }
 }
 
 .button-large {
