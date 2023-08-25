@@ -7,10 +7,16 @@
     width: 100%;
     padding: 8rem;
     position: relative;
+    @include mobile {
+        padding: 1rem;
+    }
     &__message-container {
         @include glass-div;
         padding: 4rem 6rem;
-        @include flex (center, center, column)
+        @include flex (center, center, column);
+        @include mobile {
+            padding: 2rem 1rem;
+        }
     }
     &__title {
         margin: 0.5rem;
@@ -29,6 +35,10 @@
         z-index: -1;
         width: 50%;
         animation: $float;
+        @include mobile {
+            width: 100%;
+            left: 0;
+        }
     }
 }
 
