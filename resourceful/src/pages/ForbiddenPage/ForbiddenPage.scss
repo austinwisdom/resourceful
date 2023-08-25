@@ -27,17 +27,17 @@
     }
     &__message {
         margin: 0.5rem;
+        text-align: center;
     }
     &__floating-blob {
         position: absolute;
-        top: 4rem;
-        left: 25vw;
+        transform: translate(-50%, 0);
         z-index: -1;
         width: 50%;
         animation: $float;
         @include mobile {
             width: 100%;
-            left: 0;
+            max-width: 25rem;
         }
     }
 }

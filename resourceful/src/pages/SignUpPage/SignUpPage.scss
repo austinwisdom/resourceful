@@ -21,8 +21,7 @@
         @include mobile {
             display: block;
             position: absolute;
-            top: 0;
-            left: 0;
+            transform: translate(-50%, 0);
             z-index: -1;
             animation: $float;
         }
@@ -51,6 +50,7 @@
         gap: 1rem;
         @include mobile {
             width: 100%;
+            max-width: 25rem;
             padding: 2rem;
         }
     }
