@@ -10,6 +10,11 @@
         padding: 1rem;
         @include flex (center, flex-start)
     }
+    @include tablet {
+        position: relative;
+        padding: 10rem 2rem;
+        @include flex (center, flex-start)
+    }
     &__img-wrapper {
         position: relative;
         @include mobile {
@@ -32,11 +37,40 @@
             animation: $float;
         }
     }
+    &__tablet-top {
+        display: none;
+        @include mobile {
+            display: none;
+        }
+        @include tablet {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: auto;
+            z-index: 2;
+        }
+    }
+    &__tablet-bottom {
+        display: none;
+        @include mobile {
+            display: none;
+        }
+        @include tablet {
+            display: block;
+            position: absolute;
+            bottom: -0.75rem;
+            left: auto;
+            z-index: 2;
+        }
+    }
     &__img-icons {
         position: relative;
         top: 2rem;
         left: 3rem;
         z-index: 2;
+        @include tablet {
+            display: none;
+        }
     }
     &__form {
         @include glass-div;
@@ -49,6 +83,10 @@
             width: 100%;
             max-width: 25rem;
             padding: 2rem;
+        }
+        @include tablet {
+            width: 100%;
+            max-width: 50rem;
         }
     }
     &__title {
