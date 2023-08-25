@@ -5,6 +5,8 @@ import { LoggedIn, SetLoggedIn, SetUserInfo } from "../../types/types";
 import authIcons from "../../assets/images/auth-icons.png";
 import purpleBlob from "../../assets/images/purple-blob.png";
 import mobileBlobs from "../../assets/images/mobile-log-in-blobs.png";
+import tabletBlobsTop from "../../assets/images/icons-tablet-top.png";
+import tabletBlobsBottom from "../../assets/images/icons-tablet-bottom.png";
 import 'react-toastify/dist/ReactToastify.css';
 import "./LogInPage.scss";
 import { inputValue, signinSubmit } from "../../utilities/handlers";
@@ -33,6 +35,8 @@ const LogInPage:React.FC<Props> = ({setLoggedIn, loggedIn}) => {
     return (
         <section className="log-in">
             <img src={mobileBlobs} alt="blobs" className="log-in__mobile-blobs"/>
+            <img src={tabletBlobsTop} alt="blobs" className="log-in__tablet-top"/>
+            <img src={tabletBlobsBottom} alt="blobs" className="log-in__tablet-bottom"/>
             <div className="log-in__img-wrapper">
                 <img src={authIcons} alt="icons" className="log-in__img-icons"/>
                 <img src={purpleBlob} alt="blob" className="log-in__blob"/>
