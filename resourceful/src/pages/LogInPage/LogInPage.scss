@@ -23,7 +23,8 @@
     }
     &__blob {
         position: absolute;
-        transform: translate(-50%, 0);
+        top: 4rem;
+        left: 2rem;
         z-index: -1;
         animation: $float;
     }
