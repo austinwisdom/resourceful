@@ -8,6 +8,8 @@ import { AxiosResponse } from "axios";
 import Search from "../../components/Search/Search";
 
 const CategoryPage: React.FC = () => {
+  const backendURI = import.meta.env.VITE_BACKEND_URI;
+  
   const { id } = useParams();
 
   const [search, setSearch] = useState("");
@@ -51,7 +53,7 @@ const CategoryPage: React.FC = () => {
       <div className="category__main-container">
         <div className="category__header">
           <img
-            src={`http://localhost:8080/icons/${id!.slice(0, 4)}.png`}
+            src={`${backendURI}/icons/${id!.slice(0, 4)}.png`}
             alt="html and css icons"
             className="category__icon"
           />
@@ -72,7 +74,7 @@ const CategoryPage: React.FC = () => {
         </div>
       </div>
       <img
-        src={`http://localhost:8080/blobs/${id!.slice(0, 4)}.png`}
+        src={`${backendURI}/blobs/${id!.slice(0, 4)}.png`}
         alt="red blob"
         className="category__blob"
       />
